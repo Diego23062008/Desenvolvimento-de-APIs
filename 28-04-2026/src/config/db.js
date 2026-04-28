@@ -4,11 +4,10 @@ dotenv.config();
 
 const { Pool } = pg; 
 const config = {     
-    host: "1",
+    host: "127.0.1.1",
     password: "123",
     user: "Diego",
-    port: "5000",
-    database: ""
+    database: "cxz"
 };
 
 export const db = new Pool(config);
