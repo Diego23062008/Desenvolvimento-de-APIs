@@ -7,7 +7,7 @@ const config = {
     host: "127.0.1.1",
     password: "senai",
     user: "postgres",
-    
+    port: "3000",
     database: ""
 };
 
