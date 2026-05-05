@@ -3,7 +3,9 @@ import 'dotenv/config'
 import { frutasRoute } from './routes/frutas.route.js'
 
 const app = express()
-const PORT = process.env.API_PORT
+
+// Se houver uma porta no .env, ele usa. Se não, usa a 5000.
+const PORT = process.env.PORT || 5000 
 
 app.use(express.json())
 
@@ -13,6 +15,7 @@ app.get("/", (req, res) => {
 
 app.use("/frutas", frutasRoute)
 
+// USAMOS A VARIÁVEL PORT AQUI
 app.listen(PORT, () => {
     console.log(`API rodando em http://localhost:${PORT}`);
 })

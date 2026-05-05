@@ -1,18 +1,12 @@
 import pg from 'pg'
+import 'dotenv/config'
 
 const { Pool } = pg
 
 export const pool = new Pool({
-    host: process.env.DB_HOST,
-    password: process.env.DB_PASS,
-    user: process.env.DB_USER,
-    database: process.env.DB_NAME
-})
-
-
-// the pool will emit an error on behalf of any idle clients
-// it contains if a backend error or network partition happens
-pool.on('error', (err, client) => {
-    console.error('Unexpected error on idle client', err)
-    process.exit(-1)
+  user: process.env.DB_USER || 'postgres', // Tenta ler do env, se não der, usa 'postgres'
+  password: String(process.env.DB_PASSWORD),
+  host: process.env.DB_HOST || 'localhost',
+  port: process.env.DB_PORT || 5432,
+  database: process.env.DB_DATABASE
 })
