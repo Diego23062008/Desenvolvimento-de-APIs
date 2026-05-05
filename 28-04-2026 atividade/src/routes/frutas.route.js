@@ -1,0 +1,9 @@
+import { Router } from 'express'
+import { frutasService } from '../services/frutas.service.js'
+
+export const frutasRoute = Router()
+
+frutasRoute.get("/", async (req, res) => {
+    const frutas = await frutasService.getAll()
+    res.json(frutas)
+})
